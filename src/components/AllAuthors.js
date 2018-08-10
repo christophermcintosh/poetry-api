@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+// import { authorActions } from './actions/';
+import { fetchAuthors } from './store';
 import axios from 'axios';
 
 const POETRYDB_API_KEY = `${process.env.REACT_APP_POETRYDB_API_KEY}`;
 
 class AllAuthors extends Component {
+  constructor() {
+    super();
+  }
   componentDidMount() {
-    axios({
-      method: 'get',
-      url: 'https://thundercomb-poetry-db-v1.p.mashape.com/author',
-      headers: {
-        'X-Mashape-Key': POETRYDB_API_KEY
-      }
-    })
-      .then(function(response) {
-        console.log(response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    this.props.fetchAuthors();
   }
   render() {
     return (
       <div>
-        <h1>Hello</h1>
       </div>
     );
   }
 }
-export default AllAuthors;
+
+const mapStateToProps = state => {
+  return {
+    authors: state.authors
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchAuthors: () => dispatch(fetchAuthors())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AllAuthors);

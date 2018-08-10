@@ -1,0 +1,4 @@
+export default {
+  FETCH_AUTHORS: 'FETCH_AUTHORS',
+  FETCH_AUTHOR: 'FETCH_AUTHOR'
+};
