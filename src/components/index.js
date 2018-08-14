@@ -1,4 +1,7 @@
 import Header from './Header';
 import AllAuthors from './AllAuthors';
 
-export { Header, AllAuthors };
+import SingleAuthor from './SingleAuthor';
+import SinglePoem from './SinglePoem';
+
+export { Header, AllAuthors, SingleAuthor, SinglePoem };

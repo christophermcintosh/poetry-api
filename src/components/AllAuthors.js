@@ -1,38 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-// import { authorActions } from './actions/';
+import { withRouter, Link } from 'react-router-dom';
 import { fetchAuthors } from './store';
-import axios from 'axios';
+import author from './store/author';
 
-const POETRYDB_API_KEY = `${process.env.REACT_APP_POETRYDB_API_KEY}`;
+const AllAuthors = ({ listOfAuthors }) => {
+  if (!listOfAuthors) return null;
 
-class AllAuthors extends Component {
-  constructor() {
-    super();
-  }
-  componentDidMount() {
-    this.props.fetchAuthors();
-  }
-  render() {
-    return (
-      <div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    authors: state.authors
-  };
+  return (
+    <div>
+      <ul>
+        {listOfAuthors.authors.map((author, index) => {
+          return (
+            <li key={index}>
+              <Link to={`/author/${author}`}>{author}</Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchAuthors: () => dispatch(fetchAuthors())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AllAuthors);
+export default AllAuthors;

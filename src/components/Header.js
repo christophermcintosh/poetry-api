@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 class Header extends Component {
   render() {
     return (
-      <div>
+      <div className="text-center">
         <Link to="/">Home</Link>
-        <Link to="/authors">All Authors</Link>
+        <Link to="/allauthors">All Authors</Link>
       </div>
     );
   }
