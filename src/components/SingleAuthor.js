@@ -1,34 +1,37 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchAuthor } from './store';
+import { fetchAuthor, requestData, receiveData } from './store';
 
 class SingleAuthor extends Component {
   componentDidMount() {
     const { authorName } = this.props.match.params;
-    this.props.fetchAuthor(authorName);
-    this.onRender();
+
+    this.onRender(authorName);
   }
 
   componentWillReceiveProps(nextProps) {
     const { authorName } = this.props.match.params;
-    const newAuthorName = nextProps.match.params.authorName;
+    const nextAuthorName = nextProps.match.params.authorName;
 
-    if (authorName !== newAuthorName) {
-      this.props.fetchAuthor(newAuthorName);
-      this.onRender();
+    if (authorName !== nextAuthorName) {
+      this.onRender(nextAuthorName);
     }
   }
 
-  onRender = () => {
+  onRender = author => {
     window.scrollTo(0, 0);
+    this.props.requestData();
+    this.props.fetchAuthor(author).then(() => {
+      this.props.receiveData();
+    });
   };
 
   render() {
     const { authorName } = this.props.match.params;
-    const { author } = this.props;
+    const { author, isFetching } = this.props;
 
-    if (!author) return null;
+    if (isFetching) return <h1>Loading...</h1>;
     return (
       <div>
         <h1>{authorName}</h1>
@@ -59,12 +62,15 @@ class SingleAuthor extends Component {
 
 const mapStateToProps = state => {
   return {
-    author: state.authors.author
+    author: state.authors.author,
+    isFetching: state.isFetching
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAuthor: authorName => dispatch(fetchAuthor(authorName))
+  fetchAuthor: authorName => dispatch(fetchAuthor(authorName)),
+  requestData: () => dispatch(requestData()),
+  receiveData: () => dispatch(receiveData())
 });
 
 export default connect(

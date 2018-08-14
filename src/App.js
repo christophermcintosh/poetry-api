@@ -8,22 +8,26 @@ import {
   LandingPage,
   NotFound
 } from './components';
-import { fetchAuthors } from './components/store';
+import { fetchAuthors, requestData, receiveData } from './components/store';
 import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchAuthors();
+    this.props.requestData();
+    this.props.fetchAuthors().then(() => {
+      this.props.receiveData();
+    });
   }
   render() {
-    const { authors } = this.props;
+    const { authors, isFetching } = this.props;
+
     return (
       <div className="App container-fluid">
         <Header />
         <div className="row">
           <div className="col-4">
-            <AllAuthors listOfAuthors={authors} />
+            <AllAuthors listOfAuthors={authors} isFetching={isFetching} />
           </div>
           <div className="col-8">
             <Switch>
@@ -44,12 +48,15 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    authors: state.authors
+    authors: state.authors,
+    isFetching: state.isFetching
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAuthors: () => dispatch(fetchAuthors())
+  fetchAuthors: () => dispatch(fetchAuthors()),
+  requestData: () => dispatch(requestData()),
+  receiveData: () => dispatch(receiveData())
 });
 
 export default connect(

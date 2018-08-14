@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class SinglePoem extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     const { authorName, poemTitle } = this.props.match.params;
-    console.log(this.props.location.string);
     const { poem } = this.props.location.state;
+
     return (
       <div>
         <h1>{poemTitle}</h1>
