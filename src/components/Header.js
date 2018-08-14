@@ -6,7 +6,6 @@ class Header extends Component {
     return (
       <div className="text-center">
         <Link to="/">Home</Link>
-        <Link to="/allauthors">All Authors</Link>
       </div>
     );
   }
