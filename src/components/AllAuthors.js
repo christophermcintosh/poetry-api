@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AllAuthors = ({ listOfAuthors }) => {
-  if (!listOfAuthors) return null;
+const AllAuthors = ({ listOfAuthors, isFetching }) => {
+  if (isFetching) return <h1>Loading...</h1>;
 
   return (
     <div>

@@ -1,10 +1,8 @@
 import axios from 'axios';
-
 import { POETRYDB_API_KEY } from './';
 
 const GET_AUTHORS = 'GET_AUTHORS';
 const GET_AUTHOR = 'GET_AUTHOR';
-const GET_TITLE = 'GET_TITLE';
 
 const initialState = {
   authors: [],
@@ -21,13 +19,6 @@ export const getAuthors = authors => {
 export const getAuthor = author => {
   return {
     type: GET_AUTHOR,
-    author
-  };
-};
-
-export const getTitles = author => {
-  return {
-    type: GET_TITLE,
     author
   };
 };
@@ -74,8 +65,7 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, { authors: action.authors });
     case GET_AUTHOR:
       return Object.assign({}, state, { author: action.author });
-    case GET_TITLE:
-      return Object.assign({}, state, { titles: action.titles });
+
     default:
       return state;
   }
