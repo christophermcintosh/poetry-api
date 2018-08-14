@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchAuthor } from './store';
-import SinglePoem from './SinglePoem';
 
 class SingleAuthor extends Component {
   componentDidMount() {
     const { authorName } = this.props.match.params;
     this.props.fetchAuthor(authorName);
+    this.onRender();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -16,8 +16,13 @@ class SingleAuthor extends Component {
 
     if (authorName !== newAuthorName) {
       this.props.fetchAuthor(newAuthorName);
+      this.onRender();
     }
   }
+
+  onRender = () => {
+    window.scrollTo(0, 0);
+  };
 
   render() {
     const { authorName } = this.props.match.params;

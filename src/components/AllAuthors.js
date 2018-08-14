@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { fetchAuthors } from './store';
-import author from './store/author';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AllAuthors = ({ listOfAuthors }) => {
   if (!listOfAuthors) return null;

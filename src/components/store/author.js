@@ -68,25 +68,6 @@ export const fetchAuthor = author => {
       });
 };
 
-export const fetchTitles = author => {
-  return dispatch =>
-    axios({
-      method: 'get',
-      url: `https://thundercomb-poetry-db-v1.p.mashape.com/author/${author}`,
-      headers: {
-        'X-Mashape-Key': POETRYDB_API_KEY
-      }
-    })
-      .then(res => res.data)
-      .then(author => {
-        console.log(author);
-        dispatch(getTitles(author));
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-};
-
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_AUTHORS:

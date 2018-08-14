@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Header, AllAuthors, SingleAuthor, SinglePoem } from './components';
+import {
+  Header,
+  AllAuthors,
+  SingleAuthor,
+  SinglePoem,
+  LandingPage,
+  NotFound
+} from './components';
 import { fetchAuthors } from './components/store';
 import { connect } from 'react-redux';
 import './App.css';
-// import SingleAuthor from './components/SingleAuthor';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchAuthors();
   }
@@ -25,11 +27,13 @@ class App extends Component {
           </div>
           <div className="col-8">
             <Switch>
-              <Route path="/author/:authorName" component={SingleAuthor} />
               <Route
                 path="/author/:authorName/:poemTitle"
                 component={SinglePoem}
               />
+              <Route path="/author/:authorName" component={SingleAuthor} />
+              <Route exact path="/" component={LandingPage} />
+              <Route component={NotFound} />
             </Switch>
           </div>
         </div>
