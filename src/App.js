@@ -6,30 +6,39 @@ import {
   SingleAuthor,
   SinglePoem,
   LandingPage,
-  NotFound
+  NotFound,
+  Authors
 } from './components';
 import { fetchAuthors, requestData, receiveData } from './components/store';
 import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      initialLoad: true
+    };
+  }
   componentDidMount() {
-    this.props.requestData();
     this.props.fetchAuthors().then(() => {
-      this.props.receiveData();
+      this.setState({
+        initialLoad: false
+      });
     });
   }
   render() {
     const { authors, isFetching } = this.props;
+    const { initialLoad } = this.state;
 
     return (
       <div className="App container-fluid">
         <Header />
         <div className="row">
-          <div className="col-4">
-            <AllAuthors listOfAuthors={authors} isFetching={isFetching} />
+          <div className="col-2">
+            <Authors listOfAuthors={authors} initialLoad={initialLoad} />
           </div>
-          <div className="col-8">
+          <div className="col-10">
             <Switch>
               <Route
                 path="/author/:authorName/:poemTitle"
