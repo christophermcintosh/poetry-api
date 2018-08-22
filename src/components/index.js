@@ -1,8 +1,19 @@
 import Header from './Header';
-import AllAuthors from './AllAuthors';
+import ListAuthors from './ListAuthors';
 import LandingPage from './LandingPage';
 import SingleAuthor from './SingleAuthor';
 import SinglePoem from './SinglePoem';
 import NotFound from './NotFound';
+import SearchBar from './SearchBar';
+import Authors from './Authors';
 
-export { Header, AllAuthors, SingleAuthor, SinglePoem, LandingPage, NotFound };
+export {
+  Header,
+  ListAuthors,
+  SingleAuthor,
+  SinglePoem,
+  LandingPage,
+  NotFound,
+  SearchBar,
+  Authors
+};

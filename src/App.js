@@ -1,35 +1,63 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Drawer from '@material-ui/core/Drawer';
 import {
   Header,
   AllAuthors,
   SingleAuthor,
   SinglePoem,
   LandingPage,
-  NotFound
+  NotFound,
+  Authors
 } from './components';
 import { fetchAuthors, requestData, receiveData } from './components/store';
 import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      initialLoad: true,
+      left: false
+    };
+  }
   componentDidMount() {
-    this.props.requestData();
     this.props.fetchAuthors().then(() => {
-      this.props.receiveData();
+      this.setState({
+        initialLoad: false
+      });
     });
   }
+
+  toggleDrawer = (side, open) => () => {
+    this.setState({
+      [side]: open
+    });
+  };
+
   render() {
     const { authors, isFetching } = this.props;
+    const { initialLoad } = this.state;
 
     return (
       <div className="App container-fluid">
-        <Header />
+        <Header toggleDrawer={this.toggleDrawer} />
+
         <div className="row">
-          <div className="col-4">
-            <AllAuthors listOfAuthors={authors} isFetching={isFetching} />
-          </div>
-          <div className="col-8">
+          <Drawer
+            open={this.state.left}
+            onClose={this.toggleDrawer('left', false)}
+          >
+            <div tabIndex={0} role="button">
+              <Authors
+                listOfAuthors={authors}
+                initialLoad={initialLoad}
+                toggleDrawer={this.toggleDrawer}
+              />
+            </div>
+          </Drawer>
+          <div className="col-12">
             <Switch>
               <Route
                 path="/author/:authorName/:poemTitle"
