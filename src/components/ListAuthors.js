@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ListAuthors = ({ listOfAuthors }) => {
+const ListAuthors = ({ listOfAuthors, toggleDrawer }) => {
   return (
-    <div>
+    <div id="list-authors">
       <ul>
         {listOfAuthors.map((author, index) => {
           return (
-            <li key={index}>
-              <Link to={`/author/${author}`}>{author}</Link>
+            <li key={index} onClick={toggleDrawer('left', false)}>
+              <Link to={`/author/${author}`}>
+                <p>{author}</p>
+              </Link>
             </li>
           );
         })}

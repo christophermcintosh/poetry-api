@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Drawer from '@material-ui/core/Drawer';
 import {
   Header,
   AllAuthors,
@@ -17,7 +18,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      initialLoad: true
+      initialLoad: true,
+      left: false
     };
   }
   componentDidMount() {
@@ -27,18 +29,35 @@ class App extends Component {
       });
     });
   }
+
+  toggleDrawer = (side, open) => () => {
+    this.setState({
+      [side]: open
+    });
+  };
+
   render() {
     const { authors, isFetching } = this.props;
     const { initialLoad } = this.state;
 
     return (
       <div className="App container-fluid">
-        <Header />
+        <Header toggleDrawer={this.toggleDrawer} />
+
         <div className="row">
-          <div className="col-2">
-            <Authors listOfAuthors={authors} initialLoad={initialLoad} />
-          </div>
-          <div className="col-10">
+          <Drawer
+            open={this.state.left}
+            onClose={this.toggleDrawer('left', false)}
+          >
+            <div tabIndex={0} role="button">
+              <Authors
+                listOfAuthors={authors}
+                initialLoad={initialLoad}
+                toggleDrawer={this.toggleDrawer}
+              />
+            </div>
+          </Drawer>
+          <div className="col-12">
             <Switch>
               <Route
                 path="/author/:authorName/:poemTitle"

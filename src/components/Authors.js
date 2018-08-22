@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Drawer from '@material-ui/core/Drawer';
 import ListAuthors from './ListAuthors';
 
 class Authors extends Component {
@@ -43,9 +44,9 @@ class Authors extends Component {
     const { filteredAuthors, authors, searchActivated } = this.state;
     const { initialLoad } = this.props;
 
-    if (initialLoad) return <p>Loading...</p>;
+    if (initialLoad) return <p className="px-5">Loading...</p>;
     return (
-      <div id="authors">
+      <div id="authors-menu">
         <div className="text-center py-3">
           <input
             type="text"
@@ -55,9 +56,15 @@ class Authors extends Component {
           />
         </div>
         {!searchActivated ? (
-          <ListAuthors listOfAuthors={authors} />
+          <ListAuthors
+            listOfAuthors={authors}
+            toggleDrawer={this.props.toggleDrawer}
+          />
         ) : (
-          <ListAuthors listOfAuthors={filteredAuthors} />
+          <ListAuthors
+            listOfAuthors={filteredAuthors}
+            toggleDrawer={this.props.toggleDrawer}
+          />
         )}
       </div>
     );

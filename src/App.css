@@ -1,13 +1,18 @@
+/* font-family: 'Dancing Script', cursive; */
+/* font-family: 'Abel', sans-serif; */
+
 body,
 html {
-  background-color: #1d3557;
-  color: #fefefe;
+  background-color: #fefefe;
   height: 100%;
+  overflow-x: hidden;
+  font-family: "Abel", sans-serif;
 }
 
 a,
 a:hover {
-  color: #fefefe;
+  color: #333;
+  text-decoration: none;
 }
 
 ul {
@@ -25,34 +30,89 @@ img {
   max-width: 100%;
 }
 
+input[type="text"] {
+  border-radius: 10px;
+  outline: none;
+  padding: 5px 10px;
+  width: 90%;
+  max-width: 90%;
+  border-style: none;
+}
+
+button {
+  outline: none !important;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.dancing-script {
+  font-family: "Dancing Script", cursive;
+}
+
 /* Header  */
 #header {
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  background-color: #1d3557;
-  border-bottom: 1px solid #fefefe;
+  justify-content: space-between;
+  background-color: #fefefe;
+  padding: 0 10px;
+  box-shadow: 0 4px 6px -6px #222;
 }
 
 #header-title {
-  width: 100vw;
   font-size: 2rem;
+  /* color: #333; */
 }
 
 /* Landing Page */
 #landing-page {
-  height: 90vh;
+  height: 50vh;
+  width: 100vw;
   overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url(/img/prague-980732_1920.jpg);
+  background-size: cover;
 }
-#landing-page img {
+
+#landing-page-inner {
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+#landing-page-title {
+  top: 80px;
+  position: absolute;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fefefe;
+  border-radius: 10px;
 }
 
 #landing-page h1 {
-  position: absolute;
+  font-size: 2em;
 }
 
-#authors {
+#landing-page p {
+  /* font-size: 2vw; */
+}
+
+#authors-menu {
   overflow-y: scroll;
-  height: 90vh;
+  height: 100vh;
+  padding: 0 5px;
+  margin: 10px;
+}
+
+#list-authors li {
+  margin: 10px;
+}
+
+/* Drawer  */
+li p {
+  color: #000;
 }
