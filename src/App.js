@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import {
   Header,
-  AllAuthors,
   SingleAuthor,
   SinglePoem,
   LandingPage,
@@ -37,7 +36,7 @@ class App extends Component {
   };
 
   render() {
-    const { authors, isFetching } = this.props;
+    const { authors } = this.props;
     const { initialLoad } = this.state;
 
     return (

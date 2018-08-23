@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Loader from './Loader';
 import { fetchAuthor, requestData, receiveData } from './store';
 
 class SingleAuthor extends Component {
@@ -31,11 +32,11 @@ class SingleAuthor extends Component {
     const { authorName } = this.props.match.params;
     const { author, isFetching } = this.props;
 
-    if (isFetching) return <h1>Loading...</h1>;
+    if (isFetching) return <Loader size="120px" />;
     return (
-      <div>
-        <h1>{authorName}</h1>
-        <ul>
+      <div className="list-container">
+        <h1 className="text-center font-weight-bold my-5">{authorName}</h1>
+        <ul className="mb-5">
           {author.length
             ? author.map((auth, i) => {
                 return (
@@ -48,8 +49,12 @@ class SingleAuthor extends Component {
                         }
                       }}
                     >
+                      <span className="font-weight-bold px-2 list-numbers">
+                        {i + 1}.
+                      </span>{' '}
                       {auth.title}
                     </Link>
+                    <hr />
                   </li>
                 );
               })
