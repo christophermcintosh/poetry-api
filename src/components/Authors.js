@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Drawer from '@material-ui/core/Drawer';
 import ListAuthors from './ListAuthors';
+import Loader from './Loader';
 
 class Authors extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class Authors extends Component {
     const { filteredAuthors, authors, searchActivated } = this.state;
     const { initialLoad } = this.props;
 
-    if (initialLoad) return <p className="px-5">Loading...</p>;
+    if (initialLoad) return <Loader size="50px" margin="20px" />;
     return (
       <div id="authors-menu">
         <div className="text-center py-3">

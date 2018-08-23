@@ -10,6 +10,7 @@ const ListAuthors = ({ listOfAuthors, toggleDrawer }) => {
             <li key={index} onClick={toggleDrawer('left', false)}>
               <Link to={`/author/${author}`}>
                 <p>{author}</p>
+                <hr />
               </Link>
             </li>
           );

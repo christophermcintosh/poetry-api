@@ -10,12 +10,14 @@ class SinglePoem extends Component {
     const { poem } = this.props.location.state;
 
     return (
-      <div>
-        <h1>{poemTitle}</h1>
-        <h2>
+      <div className="text-center">
+        <h1 className="text-center font-weight-bold font-italic mt-5">
+          {poemTitle}
+        </h1>
+        <p className="text-center font-weight-bold mb-4">
           By: <Link to={`/author/${authorName}`}>{authorName}</Link>
-        </h2>
-        <ul>
+        </p>
+        <ul className="mb-5">
           {poem
             ? poem.lines.map((line, i) => {
                 return <li key={i}>{line}</li>;
