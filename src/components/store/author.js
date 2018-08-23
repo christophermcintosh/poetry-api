@@ -37,7 +37,7 @@ export const fetchAuthors = () => {
         dispatch(getAuthors(authors.authors));
       })
       .catch(function(error) {
-        console.log(error);
+        console.error(error);
       });
 };
 
@@ -55,7 +55,7 @@ export const fetchAuthor = author => {
         dispatch(getAuthor(author));
       })
       .catch(function(error) {
-        console.log(error);
+        console.error(error);
       });
 };
 
