@@ -78,13 +78,12 @@ button {
   align-items: center;
   justify-content: space-between;
   background-color: #fefefe;
-  padding: 0 10px;
+  padding: 0 20px;
   box-shadow: 0 4px 6px -6px #222;
 }
 
 #header-title {
   font-size: 2rem;
-  /* color: #333; */
 }
 
 #header button {
@@ -104,7 +103,7 @@ button {
   width: 100vw;
   overflow: hidden;
   background-repeat: no-repeat;
-  background-image: url(/img/prague-980732_1920.jpg);
+  background-image: url(https://image.ibb.co/h0Trvz/prague_980732_1920.jpg);
   background-size: cover;
   background-position: center;
 }

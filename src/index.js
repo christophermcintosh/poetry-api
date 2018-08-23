@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/" component={App} />
+      <Route path="/poetry-api" component={App} />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

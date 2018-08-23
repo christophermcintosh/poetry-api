@@ -59,11 +59,14 @@ class App extends Component {
           <div className="col-12">
             <Switch>
               <Route
-                path="/author/:authorName/:poemTitle"
+                path="/poetry-api/author/:authorName/:poemTitle"
                 component={SinglePoem}
               />
-              <Route path="/author/:authorName" component={SingleAuthor} />
-              <Route exact path="/" component={LandingPage} />
+              <Route
+                path="/poetry-api/author/:authorName"
+                component={SingleAuthor}
+              />
+              <Route exact path="/poetry-api" component={LandingPage} />
               <Route component={NotFound} />
             </Switch>
           </div>

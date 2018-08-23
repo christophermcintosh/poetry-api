@@ -11,7 +11,7 @@ class Header extends Component {
           </button>
         </div>
         <div id="header-title" className="dancing-script">
-          <Link to="/">
+          <Link to="/poetry-api">
             <p>Poetry</p>
           </Link>
         </div>

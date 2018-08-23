@@ -17,7 +17,8 @@ class SinglePoem extends Component {
             {poemTitle}
           </h1>
           <p className="text-center font-weight-bold mb-4">
-            By: <Link to={`/author/${authorName}`}>{authorName}</Link>
+            By:{' '}
+            <Link to={`/poetry-api/author/${authorName}`}>{authorName}</Link>
           </p>
           <ul className="mb-3">
             {poem

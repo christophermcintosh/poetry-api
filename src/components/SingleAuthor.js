@@ -43,7 +43,9 @@ class SingleAuthor extends Component {
                   <li key={i}>
                     <Link
                       to={{
-                        pathname: `/author/${auth.author}/${auth.title}`,
+                        pathname: `/poetry-api/author/${auth.author}/${
+                          auth.title
+                        }`,
                         state: {
                           poem: auth
                         }

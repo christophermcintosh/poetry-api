@@ -8,7 +8,7 @@ const ListAuthors = ({ listOfAuthors, toggleDrawer }) => {
         {listOfAuthors.map((author, index) => {
           return (
             <li key={index} onClick={toggleDrawer('left', false)}>
-              <Link to={`/author/${author}`}>
+              <Link to={`/poetry-api/author/${author}`}>
                 <p>{author}</p>
                 <hr />
               </Link>
